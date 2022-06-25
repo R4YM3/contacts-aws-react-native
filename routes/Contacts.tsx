@@ -23,7 +23,6 @@ export function ContactsScreen({ navigation }: IProps) {
   return (
     <View style={styles.container}>
       <FlatList style={styles.contacts} data={data} renderItem={renderContact} />
-      <Button title="Go to contact" onPress={() => navigation.navigate(SCREEN_NAME_CONTACT)} />
     </View>
   );
 
