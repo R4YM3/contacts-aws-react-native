@@ -13,11 +13,11 @@ export function ContactsScreen({ navigation }: IProps) {
   const { status, data } = useContacts();
 
   if (status === 'error') {
-    return <p>Error fetching data</p>
+    return <Text>Error fetching data</Text>
   }
 
   if (status === 'loading') {
-    return <p>Fetching data...</p>
+    return <Text>Fetching data...</Text>
   }
 
   return (
