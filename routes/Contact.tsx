@@ -1,16 +1,28 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StyleSheet, View, Text } from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { ContactDetails, SCREEN_NAME_CONTACT_DETAILS } from './ContactDetails';
+import { ContactChat, SCREEN_NAME_CONTACT_CHAT } from './ContactChat';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
 
 export const SCREEN_NAME_CONTACT = 'Contact';
 type IProps = NativeStackScreenProps<RootStackParamList, SCREEN_NAME_CONTACT>;
 
-export function ContactScreen({ navigation }: IProps) {
+const Tab = createMaterialTopTabNavigator();
+
+export function ContactScreen({ route }: IProps) {
+  const { userId } = route.params;
+  console.log({ userId });
+
   return (
     <View style={styles.container}>
       <Text>Contact</Text>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+
+      <Tab.Navigator initialRouteName={SCREEN_NAME_CONTACT_DETAILS}>
+        <Tab.Screen name={SCREEN_NAME_CONTACT_DETAILS} component={ContactDetails} />
+        <Tab.Screen name={SCREEN_NAME_CONTACT_CHAT} component={ContactChat} />
+      </Tab.Navigator>
     </View>
   );
 }

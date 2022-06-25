@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 export type RootStackParamList = {
   [SCREEN_NAME_HOME]: undefined;
   [SCREEN_NAME_CONTACTS]: undefined;
-  [SCREEN_NAME_CONTACT]: undefined;
+  [SCREEN_NAME_CONTACT]: { userId: number };
 };
 
 const { Navigator, Screen } = createNativeStackNavigator();
