@@ -4,13 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { HomeScreen, SCREEN_NAME_HOME } from './routes/Home';
 import { ContactsScreen, SCREEN_NAME_CONTACTS } from './routes/Contacts';
-import { ContactScreen, SCREEN_NAME_CONTACT } from './routes/Contact';
+import { ContactScreen, IContactParams, SCREEN_NAME_CONTACT } from './routes/Contact';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-export type RootStackParamList = {
+export interface RootStackParamList extends IContactParams {
   [SCREEN_NAME_HOME]: undefined;
   [SCREEN_NAME_CONTACTS]: undefined;
-  [SCREEN_NAME_CONTACT]: { userId: number };
 };
 
 const { Navigator, Screen } = createNativeStackNavigator();
