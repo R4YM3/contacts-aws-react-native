@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { ContactDetails, SCREEN_NAME_CONTACT_DETAILS } from './ContactDetails';
 import { ContactChat, SCREEN_NAME_CONTACT_CHAT } from './ContactChat';
@@ -29,16 +29,28 @@ export function ContactScreen({ route }: IProps) {
     return <Text>Fetching data...</Text>
   }
 
-  console.log("DATA", data)
+  if (status === 'success' && data) {
+    return (
+      <View style={styles.container}>
+
+        <Image
+          style={styles.avatar}
+          source={{ uri: 'https://busjebloemen.com/wp-content/uploads/2021/05/testimonial-avatar-male-1-ux-builder.jpg' }}
+        />
+
+        <Text style={styles.name}>{data.name}</Text>
+
+        <Tab.Navigator initialRouteName={SCREEN_NAME_CONTACT_DETAILS}>
+          <Tab.Screen name={SCREEN_NAME_CONTACT_DETAILS} component={ContactDetails} />
+          <Tab.Screen name={SCREEN_NAME_CONTACT_CHAT} component={ContactChat} />
+        </Tab.Navigator>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
-      <Text>Contact</Text>
-
-      <Tab.Navigator initialRouteName={SCREEN_NAME_CONTACT_DETAILS}>
-        <Tab.Screen name={SCREEN_NAME_CONTACT_DETAILS} component={ContactDetails} />
-        <Tab.Screen name={SCREEN_NAME_CONTACT_CHAT} component={ContactChat} />
-      </Tab.Navigator>
+      Something went wrong
     </View>
   );
 }
@@ -50,4 +62,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  avatar: {
+    width: 128,
+    height: 128,
+    borderRadius: 128,
+    marginTop: 24,
+    marginBottom: 24
+  },
+  name: {
+    fontSize: 24
+  }
 });
