@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     width: 128,
     height: 128,
     borderRadius: 128,
-    marginTop: 24,
+    marginTop: 0,
     marginBottom: 24
   },
   name: {

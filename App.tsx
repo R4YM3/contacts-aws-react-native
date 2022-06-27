@@ -23,7 +23,10 @@ export default function App() {
         <Navigator initialRouteName={SCREEN_NAME_HOME}>
           <Screen name={SCREEN_NAME_HOME} component={HomeScreen} />
           <Screen name={SCREEN_NAME_CONTACTS} component={ContactsScreen} />
-          <Screen name={SCREEN_NAME_CONTACT} component={ContactScreen} />
+          <Screen name={SCREEN_NAME_CONTACT} component={ContactScreen} options={{
+            title: '',
+            headerShadowVisible: false, // applied here
+          }} />
         </Navigator>
       </NavigationContainer>
     </QueryClientProvider>
